@@ -162,7 +162,10 @@
     font-family: "Roboto";
     font-weight: 400;
     font-display: swap;
-    src: local(""), url("/assets/fonts/roboto-v29-latin-regular.woff2") format("woff2"), url("/assets/fonts/roboto-v29-latin-regular.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    src:
+      local(""),
+      url("/assets/fonts/roboto-v29-latin-regular.woff2") format("woff2"),
+      url("/assets/fonts/roboto-v29-latin-regular.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
   }
   /* roboto-700 - latin */
   @font-face {
@@ -170,7 +173,10 @@
     font-family: "Roboto";
     font-weight: 700;
     font-display: swap;
-    src: local(""), url("/assets/fonts/roboto-v29-latin-700.woff2") format("woff2"), url("/assets/fonts/roboto-v29-latin-700.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    src:
+      local(""),
+      url("/assets/fonts/roboto-v29-latin-700.woff2") format("woff2"),
+      url("/assets/fonts/roboto-v29-latin-700.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
   }
   /* roboto-900 - latin */
   @font-face {
@@ -178,7 +184,10 @@
     font-family: "Roboto";
     font-weight: 900;
     font-display: swap;
-    src: local(""), url("/assets/fonts/roboto-v29-latin-900.woff2") format("woff2"), url("/assets/fonts/roboto-v29-latin-900.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    src:
+      local(""),
+      url("/assets/fonts/roboto-v29-latin-900.woff2") format("woff2"),
+      url("/assets/fonts/roboto-v29-latin-900.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
   }
 }
 /* Reset Margins */
@@ -213,7 +222,7 @@
   #dark-mode-toggle {
     z-index: 1000;
     position: absolute;
-    top: 0.625rem;
+    /* top: 0.625rem; */
     right: 4.375rem;
     display: block;
     border: none;
@@ -235,13 +244,17 @@
   }
   #dark-mode-toggle .cs-moon {
     z-index: 2;
-    transition: transform 0.3s, opacity 0.3s;
+    transition:
+      transform 0.3s,
+      opacity 0.3s;
   }
   #dark-mode-toggle .cs-sun {
     z-index: 1;
     opacity: 0;
     transform: translate(-50%, 100%);
-    transition: transform 0.3s, opacity 0.3s;
+    transition:
+      transform 0.3s,
+      opacity 0.3s;
   }
 }
 /* Desktop - 1024px */
@@ -347,7 +360,10 @@
   }
   #cs-navigation .cs-line1 {
     top: 0;
-    transition: transform 0.5s, top 0.3s, left 0.3s;
+    transition:
+      transform 0.5s,
+      top 0.3s,
+      left 0.3s;
     animation-duration: 0.7s;
     animation-timing-function: ease;
     animation-direction: normal;
@@ -357,7 +373,10 @@
   #cs-navigation .cs-line2 {
     top: 50%;
     transform: translateX(-50%) translateY(-50%);
-    transition: top 0.3s, left 0.3s, transform 0.5s;
+    transition:
+      top 0.3s,
+      left 0.3s,
+      transform 0.5s;
     animation-duration: 0.7s;
     animation-timing-function: ease;
     animation-direction: normal;
@@ -365,7 +384,9 @@
   }
   #cs-navigation .cs-line3 {
     bottom: 0;
-    transition: bottom 0.3s, opacity 0.3s;
+    transition:
+      bottom 0.3s,
+      opacity 0.3s;
   }
   #cs-navigation .cs-ul-wrapper {
     z-index: -1;
@@ -378,7 +399,9 @@
     background-color: #fff;
     height: 100vh;
     overflow: hidden;
-    transition: transform 0.4s, opacity 0.3s;
+    transition:
+      transform 0.4s,
+      opacity 0.3s;
     box-shadow: inset rgba(0, 0, 0, 0.2) 0px 8px 24px;
     transform-origin: top right;
   }
@@ -403,7 +426,9 @@
     margin-right: 0;
     width: 100%;
     list-style: none;
-    transition: transform 0.6s, opacity 0.9s;
+    transition:
+      transform 0.6s,
+      opacity 0.9s;
     text-align: right;
   }
   #cs-navigation .cs-li:nth-of-type(1) {
@@ -473,7 +498,9 @@
     background: rgba(0, 0, 0, 0.6);
     height: 100vh;
     width: 0%;
-    transition: width 0.5s, opacity 0.3s;
+    transition:
+      width 0.5s,
+      opacity 0.3s;
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
   }
@@ -565,7 +592,13 @@
     box-sizing: border-box;
     overflow: hidden;
     padding: 0 1.5rem 0 1.5rem;
-    transition: padding 0.3s, margin 0.3s, height 0.3s, opacity 0.3s, transform 0.3s, visibility 0.3s;
+    transition:
+      padding 0.3s,
+      margin 0.3s,
+      height 0.3s,
+      opacity 0.3s,
+      transform 0.3s,
+      visibility 0.3s;
     gap: 0.75rem;
     transform-origin: top right;
   }
@@ -584,15 +617,18 @@
   #cs-navigation .cs-dropdown {
     position: relative;
   }
-  #cs-navigation .cs-dropdown.cs-active, #cs-navigation .cs-dropdown:hover {
+  #cs-navigation .cs-dropdown.cs-active,
+  #cs-navigation .cs-dropdown:hover {
     cursor: pointer;
   }
-  #cs-navigation .cs-dropdown.cs-active .cs-drop-ul, #cs-navigation .cs-dropdown:hover .cs-drop-ul {
+  #cs-navigation .cs-dropdown.cs-active .cs-drop-ul,
+  #cs-navigation .cs-dropdown:hover .cs-drop-ul {
     visibility: visible;
     opacity: 1;
     transform: scaleY(1);
   }
-  #cs-navigation .cs-dropdown.cs-active .cs-drop-li, #cs-navigation .cs-dropdown:hover .cs-drop-li {
+  #cs-navigation .cs-dropdown.cs-active .cs-drop-li,
+  #cs-navigation .cs-dropdown:hover .cs-drop-li {
     opacity: 1;
     transform: translateY(0);
   }
@@ -623,7 +659,10 @@
     min-width: 12.5rem;
     overflow: hidden;
     padding: 0;
-    transition: transform 0.3s, visibility 0.3s, opacity 0.3s;
+    transition:
+      transform 0.3s,
+      visibility 0.3s,
+      opacity 0.3s;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 10px 16px;
     transform-origin: top;
   }
@@ -637,7 +676,9 @@
     text-decoration: none;
     font-size: 1rem;
     color: var(--bodyTextColor);
-    transition: opacity 0.6s, transform 0.6s;
+    transition:
+      opacity 0.6s,
+      transform 0.6s;
   }
   #cs-navigation .cs-drop-li:nth-of-type(1) {
     transition-delay: 0.05s;
@@ -689,7 +730,9 @@
     font-size: 1rem;
     line-height: 1.5em;
     color: var(--bodyTextColor);
-    transition: color 0.3s, background-color 0.3s;
+    transition:
+      color 0.3s,
+      background-color 0.3s;
   }
   #cs-navigation .cs-li-link.cs-drop-link:hover {
     background-color: #f7f7f7;
