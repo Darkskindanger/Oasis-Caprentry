@@ -1,0 +1,380 @@
+---
+title: 'Pixel Perfect Websites | Code Stitch Web Designs | Denver, CO'
+description: 'Meta description for the page'
+preloadImg: '/assets/images/landing.jpg'
+permalink: '/'
+tags: 'sitemap' # Sitemap will use all pages in content/, due to content.json. As index.html is not included in content/ we need to manually add the sitemap tag to this page (only).
+eleventyNavigation:
+  key: Home
+  order: 100
+---
+
+{% extends "layouts/base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="/assets/css/local.css"/>
+    <link rel="stylesheet" href="/assets/css/critical.css"/>
+
+    <!-- Script for Netlify Identity -->
+    <script defer src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script defer>
+        if (window.netlifyIdentity) {
+            window
+                .netlifyIdentity
+                .on('init', (user) => {
+                    if (!user) {
+                        window
+                            .netlifyIdentity
+                            .on('login', () => {
+                                document.location.href = '/admin/';
+                            });
+                    }
+                });
+        }
+    </script>
+
+    <!-- JSON Schema Markup -->
+    <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "LocalBusiness",
+            "name": "{{ client.name }}",
+            {% if preloadImg %}"image": "{{ preloadImg }}",{% endif %}
+            {% if client.phoneFormatted %}"telephone": "{{ client.phoneFormatted }}",{% endif %}
+            {% if client.email %}"email": "{{ client.email }}",{% endif %}
+            {% if client.address %}
+                "address": {
+                    "@type": "PostalAddress"{% if client.address.lineOne %},
+                        "streetAddress": "{{ client.address.lineOne }}{% if client.address.lineTwo %}, {{ client.address.lineTwo }}{% endif %}"
+                    {% endif %}
+                    {% if client.address.city %},
+                        "addressLocality": "{{ client.address.city }}"
+                    {% endif %}
+                    {% if client.address.state %},
+                        "addressRegion": "{{ client.address.state }}"
+                    {% endif %}
+                    {% if client.address.zip %},
+                        "postalCode": "{{ client.address.zip }}"
+                    {% endif %}
+                    {% if client.address.country %},
+                        "addressCountry": "{{ client.address.country }}"
+                    {% endif %}
+                },
+            {% endif %}
+            {% if client.domain and page.url %}"url": "{{ client.domain }}{{ page.url }}",{% endif %}
+            {% if client.socials %}
+                "sameAs": [{% for platform, url in client.socials %}
+                        {% if not loop.first %},{% endif %}
+                        "{{ url }}"
+                    {% endfor %}]
+            {% endif %}
+        }
+    </script>
+{% endblock %}
+
+{% block body %}
+
+    <!-- ============================================ -->
+    <!--                    Hero                      -->
+    <!-- ============================================ -->
+
+    <section id="hero">
+        <div class="cs-container">
+            <div class="cs-flex-group">
+                <span class="cs-topper">Oasis Carpentry</span>
+                <h1 class="cs-title">Where quality is the standard.</h1>
+                <p class="cs-text">
+                    Sydney's leading deck and pagola specialists, With 200+ satisfied customers we ensure quality in service at a fair price. We sell good business and a lifetime of customer satisfaction.
+                </p>
+                <a href="/about" class="cs-button-solid">Explore More</a>
+                <a href="/contact" class="cs-button-transparent">
+                    Get in Touch
+                </a>
+            </div>
+        </div>
+
+        <!-- Background Image -->
+        <picture class="cs-picture">
+            <source media="(max-width: 600px)" srcset="/assets/images/landing-m.webp">
+            <source media="(min-width: 601px)" srcset="/assets/images/landing.jpg">
+            <img aria-hidden="true" decoding="async" src="/assets/images/landing.jpg" alt="new home" width="2500" height="1667" loading="eager">
+        </picture>
+    </section>
+
+    <!-- ============================================ -->
+    <!--                  Services                    -->
+    <!-- ============================================ -->
+
+    <section id="services" class="services">
+        <!-- Get Icons From flaticon.com -->
+        <div class="card">
+            <picture>
+                <img
+                aria-hidden="true"
+                decoding="async"
+                src="/assets/svgs/service1.svg"
+                alt="appliance"
+                width="48"
+                height="48"/>
+            </picture>
+            <h2>Decks</h2>
+            <p>With a range of decking options available from hardwood to composite, We'll be sure to plan, design and ofcourse build the perfect deck for you. </p>
+        </div>
+        <div class="card">
+            <picture>
+                <img
+                aria-hidden="true"
+                decoding="async"
+                src="/assets/svgs/service2.svg"
+                alt="appliance"
+                width="48"
+                height="48"/>
+            </picture>
+            <h2>Pagola</h2>
+            <p>In accompaniment with our decks we offer modern pagola solutions, enjoy your outdoor space while ensuring a top of the line shade and covering to mend the effects of nature.</p>
+        </div>
+        <div class="card">
+            <picture>
+                <img
+                aria-hidden="true"
+                decoding="async"
+                src="/assets/svgs/service3.svg"
+                alt="appliance"
+                width="48"
+                height="48"/>
+            </picture>
+            <h2>maintenance</h2>
+            <p>In need of reliable handymen?, You've found the right place. Reach out to us in times of need or preventative action and well be there to help.</p>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--                 Side By Side                 -->
+    <!-- ============================================ -->
+
+    <section id="sbs">
+        <div class="cs-container">
+            <!-- Left Image Section -->
+            <div class="cs-left">
+                <picture class="cs-picture cs-picture1">
+                    <source media="(max-width: 600px)" srcset="/assets/images/cabinets2-m.jpg">
+                    <source media="(min-width: 601px)" srcset="/assets/images/cabinets2.jpg">
+                    <img aria-hidden="true" decoding="async" src="/assets/images/cabinets2.jpg" alt="cabinets" loading="lazy" width="400" height="563">
+                </picture>
+                <picture class="cs-picture cs-picture2">
+                    <source media="(max-width: 600px)" srcset="/assets/images/construction-m.jpg">
+                    <source media="(min-width: 601px)" srcset="/assets/images/construction.jpg">
+                    <img aria-hidden="true" decoding="async" src="/assets/images/construction.jpg" alt="house" loading="lazy" width="400" height="563">
+                </picture>
+            </div>
+            <!-- Right Content Section-->
+            <div class="cs-right">
+                <span class="cs-topper">About Us</span>
+                <h2 class="cs-title">Oasis Carpentry</h2>
+                <p class="cs-text">
+                    Over 200 completed projects 
+                </p>
+                <p class="cs-text">
+                    Sydney-based carpentry business specializing in high-quality decking. Expert craftsmen delivering stylish, durable outdoor spaces. Committed to precision, client satisfaction, and enhancing homes with exceptional wooden decking solutions.
+                </p>
+                <div class="cs-flex-group">
+                    <p class="cs-flex-p">
+                        Over 200 satisfied customers across a wide range of designs and sizes. We are more than confident in our promise of quality... every time.
+                    </p>
+                    <span class="cs-name">Joe </span>
+                    <span class="cs-job">Head Carpenter</span>
+                    <img 
+                    class="cs-quote-icon"
+                    loading="lazy"
+                    decoding="async"
+                    src="https://csimg.nyc3.digitaloceanspaces.com/SideBySide/quote-white.svg"
+                    alt="gavel"
+                    width="136"
+                    height="77"/>
+                </div>
+                <a href="/about" class="cs-button-solid">More About Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--            Extra Content To Rank             -->
+    <!-- ============================================ -->
+
+    <section id="sbs-r">
+        <div class="cs-container">
+            <!-- Left Image Section -->
+            <div class="cs-left">
+                <picture class="cs-picture cs-picture1">
+                    <source media="(max-width: 600px)" srcset="/assets/images/construction-m.jpg">
+                    <source media="(min-width: 601px)" srcset="/assets/images/construction.jpg">
+                    <img aria-hidden="true" decoding="async" src="/assets/images/construction.jpg" alt="house" loading="lazy" width="400" height="560">
+                </picture>
+                <picture class="cs-picture cs-picture2">
+                    <source media="(max-width: 600px)" srcset="/assets/images/cabinets2-m.jpg">
+                    <source media="(min-width: 601px)" srcset="/assets/images/cabinets2.jpg">
+                    <img aria-hidden="true" decoding="async" src="/assets/images/cabinets2.jpg" alt="cabinets" loading="lazy" width="400" height="560">
+                </picture>
+            </div>
+            <!-- Right Content Section-->
+            <div class="cs-right">
+                <span class="cs-topper">Deck specialists</span>
+                <h2 class="cs-title">Decking</h2>
+                <p class="cs-text">
+                    The backyard began to transform into an extension of the indoor living area, with the deck serving as a bridge between the two. In the 1980s, decks became widely popular as people aimed to expand their living spaces. Initially, these decks were basic wooden platforms, frequently made from locally sourced timber.
+                </p>
+                <p class="cs-text">
+                    As the idea of outdoor living became more popular, these platforms developed into elaborate structures featuring outdoor kitchens and stylish furniture, tailored to the Australian climate. Since then, decks have continued to evolve, varying in size and serving a wide range of purposes.
+                </p>
+                <!-- <a href="/blog" class="cs-button-solid">Read our Blog</a>
+            </div> -->
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--                   Gallery                    -->
+    <!-- ============================================ -->
+
+    <section id="gallery">
+        <div class="cs-container">
+            <span class="cs-topper">Our Portfolio</span>
+            <h2 class="cs-title">Some of our favourites...</h2>
+            <div class="cs-image-group">
+                <!-- Row 1-->
+                <div class="cs-row cs-row-1">
+                    <!-- To add more images, copy and paste this row's picture tags here in order from cs-picture-1 to cs-picture-3 and they will maintain the same layout-->
+                    <picture class="cs-picture cs-picture1">
+                        <source media="(max-width: 600px)" srcset="/assets/images/portfolio/port1-m.jpg">
+                        <source media="(min-width: 601px)" srcset="/assets/images/portfolio/port1.jpg">
+                        <img aria-hidden="true" decoding="async" src="/assets/images/portfolio/port1.jpg" alt="new hallway" loading="lazy" width="400" height="560">
+                    </picture>
+                    <picture class="cs-picture cs-picture2">
+                        <source media="(max-width: 600px)" srcset="/assets/images/portfolio/port4-m.jpg">
+                        <source media="(min-width: 601px)" srcset="/assets/images/portfolio/port4.jpg">
+                        <img aria-hidden="true" decoding="async" src="/assets/images/portfolio/port4.jpg" alt="new home construction" loading="lazy" width="400" height="560">
+                    </picture>
+                    <picture class="cs-picture cs-picture3">
+                        <source media="(max-width: 600px)" srcset="/assets/images/portfolio/port7-m.jpg">
+                        <source media="(min-width: 601px)" srcset="/assets/images/portfolio/port7.jpg">
+                        <img aria-hidden="true" decoding="async" src="/assets/images/portfolio/port7.jpg" alt="building a new wall" loading="lazy" width="400" height="560">
+                    </picture>
+                </div>
+                <!-- Row 2 -->
+                <div class="cs-row cs-row-2">
+                    <!-- To add more images, copy and paste this row's picture tags here in order from cs-picture-1 to cs-picture-3 and they will maintain the same layout-->
+                    <picture class="cs-picture cs-picture1">
+                        <source media="(max-width: 600px)" srcset="/assets/images/portfolio/port2-m.jpg">
+                        <source media="(min-width: 601px)" srcset="/assets/images/portfolio/port2.jpg">
+                        <img aria-hidden="true" decoding="async" src="/assets/images/portfolio/port2.jpg" alt="new kitchen" loading="lazy" width="400" height="560">
+                    </picture>
+                    <picture class="cs-picture cs-picture2">
+                        <source media="(max-width: 600px)" srcset="/assets/images/portfolio/port5-m.jpg">
+                        <source media="(min-width: 601px)" srcset="/assets/images/portfolio/port5.jpg">
+                        <img aria-hidden="true" decoding="async" src="/assets/images/portfolio/port5.jpg" alt="apartment addition" loading="lazy" width="400" height="560">
+                    </picture>
+                    <picture class="cs-picture cs-picture3">
+                        <source media="(max-width: 600px)" srcset="/assets/images/portfolio/port8-m.jpg">
+                        <source media="(min-width: 601px)" srcset="/assets/images/portfolio/port8.jpg">
+                        <img aria-hidden="true" decoding="async" src="/assets/images/portfolio/port8.jpg" alt="kew kitchen cabinets" loading="lazy" width="400" height="560">
+                    </picture>
+                </div>
+                <!-- Row 3 -->
+                <div class="cs-row cs-row-3">
+                    <!-- To add more images, copy and paste this row's picture tags here in order from cs-picture-1 to cs-picture-3 and they will maintain the same layout-->
+                    <picture class="cs-picture cs-picture1">
+                        <source media="(max-width: 600px)" srcset="/assets/images/portfolio/port3-m.jpg">
+                        <source media="(min-width: 601px)" srcset="/assets/images/portfolio/port3.jpg">
+                        <img aria-hidden="true" decoding="async" src="/assets/images/portfolio/port3.jpg" alt="new kitchen" loading="lazy" width="400" height="560">
+                    </picture>
+                    <picture class="cs-picture cs-picture2">
+                        <source media="(max-width: 600px)" srcset="/assets/images/portfolio/port6-m.jpg">
+                        <source media="(min-width: 601px)" srcset="/assets/images/portfolio/port6.jpg">
+                        <img aria-hidden="true" decoding="async" src="/assets/images/portfolio/port6.jpg" alt="apartment addition" loading="lazy" width="400" height="560">
+                    </picture>
+                    <picture class="cs-picture cs-picture3">
+                        <source media="(max-width: 600px)" srcset="/assets/images/portfolio/port9-m.jpg">
+                        <source media="(min-width: 601px)" srcset="/assets/images/portfolio/port9.jpg">
+                        <img aria-hidden="true" decoding="async" src="/assets/images/portfolio/port9.jpg" alt="kew kitchen cabinets" loading="lazy" width="400" height="560">
+                    </picture>
+
+                </div>
+            </div>
+            <a href="/projects" class="cs-button-solid">View Full Gallery</a>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--                   Reviews                    -->
+    <!-- ============================================ -->
+
+    <section id="reviews">
+        <div class="cs-container">
+            <span class="cs-topper">Our Reviews</span>
+            <h2 class="cs-title">Words From Our Customers</h2>
+            <p class="cs-text">
+                Throughout the years we've consistently delivered our best and will continue to improve... See for yourself.
+            </p>
+            <ul class="cs-card-group">
+                <!-- Review 1 -->
+                <li class="cs-item">
+                    <img
+                    class="cs-item-img"
+                    aria-hidden="true"
+                    loading="lazy"
+                    decoding="async"
+                    src="/assets/images/user.png"
+                    alt="profile picture"
+                    width="80"
+                    height="80"/>
+                    <p class="cs-item-p">
+                        Amazing work on the firm' website. Post sale service has been amazing also, Couldnt be recommended enough.
+                    </p>
+                    <span class="cs-reviewer">
+                        Amanda 
+                        <span class="cs-desc">Law firm</span>
+                    </span>
+                    <img
+                    class="cs-item-stars"
+                    aria-hidden="true"
+                    loading="lazy"
+                    decoding="async"
+                    src="https://csimg.nyc3.digitaloceanspaces.com/Reviews/stars-yellow.svg"
+                    alt="stars"
+                    width="96"
+                    height="16"/>
+                </li>
+                <!-- Review 2 -->
+                <li class="cs-item">
+                    <img
+                    class="cs-item-img"
+                    aria-hidden="true"
+                    loading="lazy"
+                    decoding="async"
+                    src="/assets/images/user.png"
+                    alt="profile picture"
+                    width="80"
+                    height="80"/>
+                    <p class="cs-item-p">
+                        Such a seamless process... communication was easy and direct, Would definitely recommend to my people.
+                    </p>
+                    <span class="cs-reviewer">
+                        Dianne Anderson
+                        <span class="cs-desc">Homeowner</span>
+                    </span>
+                    <img
+                    class="cs-item-stars"
+                    aria-hidden="true"
+                    loading="lazy"
+                    decoding="async"
+                    src="https://csimg.nyc3.digitaloceanspaces.com/Reviews/stars-yellow.svg"
+                    alt="stars"
+                    width="96"
+                    height="16"/>
+                </li>
+            </ul>
+            <a aria-label="read more reviews" href="/reviews" class="cs-button-solid">Our Reviews</a>
+        </div>
+    </section>
+
+    {% include 'components/cta.html' %}
+{% endblock %}
